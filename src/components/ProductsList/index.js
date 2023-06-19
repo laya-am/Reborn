@@ -2,6 +2,8 @@ import React from 'react'
 import ProductCard from '../ProductCard'
 import styled from 'styled-components'
 import useSWR from "swr"
+import { StyledButton } from '../Button/Button.styled'
+import { useRouter } from 'next/router'
 
 const StyledDiv= styled.div`
     display: flex;
@@ -12,10 +14,20 @@ const StyledDiv= styled.div`
     gap: 50px;
     height: 100vh
 `
-const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 export default function ProductsList() {
-  const { data: products, error, isLoading } = useSWR('/api/productsList', fetcher)
+// const date = new Date();
+
+// const options = {
+//   weekday: "long",
+//   year: "numeric",
+//   month: "long",
+//   day: "numeric",
+// };
+// console.log(date.toLocaleString("en-GB", options));
+
+  const router= useRouter();
+  const { data: products, error, isLoading } = useSWR('/api/products')
  
   if (error) return <div>failed to load</div>
   if (isLoading) return <div>loading...</div>
@@ -23,9 +35,10 @@ export default function ProductsList() {
   return (
     <StyledDiv>
     {products.map(product => (
-      <ProductCard key={product._id} title= {product.name} price= {product.price} description= {product.description} imageSrc= {product.image}/>
-      ))
-    }
+      <StyledButton key={product._id} onClick={() => router.push(`/${product._id}`)}>
+        <ProductCard title= {product.name} price= {product.price} description= {product.description} imageSrc= {product.image} date={product.date}/>
+      </StyledButton>
+    ))}
     </StyledDiv>
   )
 }

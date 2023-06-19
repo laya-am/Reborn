@@ -11,5 +11,6 @@ gap: 10px;
 export const StyledImage= styled.img`
 border-radius: 20px 20px 0 0;
 background-color: blue;
-height: 100px;
+height: 300px;
+object-fit: cover;
 `
