@@ -1,11 +1,13 @@
 import React from 'react'
 import { StyledCard, StyledImage } from './ProductCard.styled'
 
-export default function ProductCard() {
+export default function ProductCard({title, price, description, imageSrc}) {
   return (
     <StyledCard>
-    <StyledImage src='/favicon.ico'></StyledImage>
-    this is one product
+    <StyledImage src={imageSrc}></StyledImage>
+    <h2>{title}</h2>
+    <h3>{price}</h3>
+    <p>{description}</p>
     </StyledCard>
   )
 }
