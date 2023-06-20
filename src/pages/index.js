@@ -1,8 +1,12 @@
 import Head from 'next/head'
 import ProductsList from '@/components/ProductsList'
+import SearchBar from '@/components/Search'
+import React, { useState } from 'react'
 
 
 export default function Home() {
+  const [query, setQuery] = useState("");
+
   return (
     <>
       <Head>
@@ -12,7 +16,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <ProductsList />
+        <SearchBar setQuery={setQuery} query={query} />
+        <ProductsList query={query} />
       </main>
     </>
   )
