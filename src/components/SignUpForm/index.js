@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React from 'react'
 import styled from 'styled-components'
 import useSWR from "swr"
@@ -10,11 +11,28 @@ const StyledForm= styled.form`
 `
 
 export default function SignUpForm() {
-    function handleSubmit(e){
+    const users = useSWR("/api/users");
+    const router = useRouter();
+    const {push} = router;
+
+    async function handleSubmit(e){
         e.preventDefault();
         const formData= new FormData(e.target);
         const userData= Object.fromEntries(formData);
-        console.log(userData);
+        const response = await fetch("/api/users", {
+            method: "POST",
+            body: JSON.stringify(userData),
+            headers: {
+              "Content-Type": "application/json",
+            },
+        });
+
+        if(!response.ok){
+            console.error(`There was an error: ${response.status}`)
+        }else{
+            users.mutate();
+            push("/");
+        }
     }
 
   return (
@@ -26,9 +44,9 @@ export default function SignUpForm() {
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" name='password' autoComplete='current-password' required />
         <label htmlFor="location">Location:</label>
-        <input type="location" id="location" name='location' required />
-        <label htmlFor="profile-pic">Upload a Profile Picture:</label>
-        <input type="profile-pic" id="profile-pic" name='profile-pic' />
+        <input id="location" name='location' required />
+        <label htmlFor="profilePicture">Upload a Profile Picture:</label>
+        <input id="profilePicture" name='profilePicture' />
         <label htmlFor="bio">Bio:</label>
         <textarea name="bio" id="bio" cols="30" rows="10" placeholder='Share a little about yourself. This helps the other users to connect with you more easily.'></textarea>
         <button type="submit">Sign Up</button>
