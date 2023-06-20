@@ -11,7 +11,6 @@ export default async function handler(req, res) {
   if(req.method === "POST"){
     try {
       const productData= req.body;
-      console.log("data received in server",productData);
       const newProduct= new Product(productData);
       await newProduct.save();
       res.status(201).json({status: "data posted"})
