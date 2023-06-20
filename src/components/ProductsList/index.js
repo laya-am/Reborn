@@ -15,7 +15,7 @@ const StyledDiv= styled.div`
     height: 100vh
 `
 
-export default function ProductsList() {
+export default function ProductsList({query}) {
 
   const router= useRouter();
   const { data: products, error, isLoading } = useSWR('/api/products')
@@ -23,9 +23,13 @@ export default function ProductsList() {
   if (error) return <div>failed to load</div>
   if (isLoading) return <div>loading...</div>
 
+  const foundProducts = products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()))
+  console.log("foundProducts",foundProducts);
   return (
     <StyledDiv>
-    {products.map(product => (
+    {foundProducts.length === 0 ?
+      <h1> Nothing Found:( </h1>
+      : foundProducts.map(product => (
       <StyledButton key={product._id} onClick={() => router.push(`/${product._id}`)}>
         <ProductCard title= {product.name} price= {product.price} description= {product.description} imageSrc= {product.image} date={product.date}/>
       </StyledButton>
