@@ -16,15 +16,6 @@ const StyledDiv= styled.div`
 `
 
 export default function ProductsList() {
-// const date = new Date();
-
-// const options = {
-//   weekday: "long",
-//   year: "numeric",
-//   month: "long",
-//   day: "numeric",
-// };
-// console.log(date.toLocaleString("en-GB", options));
 
   const router= useRouter();
   const { data: products, error, isLoading } = useSWR('/api/products')

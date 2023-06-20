@@ -7,6 +7,7 @@ const productSchema = new Schema({
   description: String,
   price: { type: Number, required: true },
   image: String,
+  date: String,
 //   reviews: { type: [Schema.Types.ObjectId], ref: "Review" },
 });
 
