@@ -4,4 +4,18 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-module.exports = {   compiler: {     styledComponents: true,   } }
+module.exports = {
+  compiler: {
+    styledComponents: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        port: '',
+        // pathname: '/account123/**',
+      },
+    ],
+  },
+}

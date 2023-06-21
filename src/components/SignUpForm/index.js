@@ -13,7 +13,7 @@ const StyledForm= styled.form`
 export default function SignUpForm() {
     const users = useSWR("/api/users");
     const router = useRouter();
-    const {push} = router;
+    const { push } = router;
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -31,7 +31,7 @@ export default function SignUpForm() {
             console.error(`There was an error: ${response.status}`)
         }else{
             users.mutate();
-            push("/");
+            push(`/`);
         }
     }
 
