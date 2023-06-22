@@ -18,6 +18,7 @@ list-style-type: none;
 export default function NavBar() {
   return (
     <StyledNav>
+        <StyledLi><Link href="/">Home</Link></StyledLi>
         <StyledLi><Link href="/sign-up">Sign Up</Link></StyledLi>
         <StyledLi><Link href="/create-new-product">Sell Your Product</Link></StyledLi>
         {/* <StyledLi><Link href="/profile-page">Profile</Link></StyledLi> */}
