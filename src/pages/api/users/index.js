@@ -4,6 +4,10 @@ import User from "../../../../db/models/User"
 export default async function handler(req, res) {
   await dbConnect();
 
+  if(req.method === "GET"){
+    const users = await User.find();
+    res.status(200).json(users);
+  }
   if(req.method === "POST"){
     try {
       const userData= req.body;
