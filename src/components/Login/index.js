@@ -3,8 +3,8 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 // import axios from 'axios';
 
 export default function Login() {
-    const [ user, setUser ] = useState([]);
-    const [ profile, setProfile ] = useState([]);
+    const [ user, setUser ] = useState("");
+    const [ profile, setProfile ] = useState("");
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse),
@@ -22,11 +22,8 @@ export default function Login() {
                         }
                     })
                     const data = await response.json();
-                    console.log("received data", data);
-                    .then((data) => {
+                    // console.log("received data", data);
                         setProfile(data);
-                    })
-                    .catch((err) => console.log(err));
             }
         }
     fetchData()
@@ -42,10 +39,7 @@ export default function Login() {
 
     return (
         <div>
-            {/* <h2>React Google Login</h2>
-            <br />
-            <br /> */}
-            {/* {profile ? (
+             {profile ? (
                 <div>
                     <img src={profile.picture} alt="user image" />
                     <h3>User Logged in</h3>
@@ -55,9 +49,9 @@ export default function Login() {
                     <br />
                     <button onClick={logOut}>Log out</button>
                 </div>
-            ) : ( */}
+            ) : (
                 <button onClick={() => login()}>Sign in with Google 🚀 </button>
-            {/* )} */}
+            )}
         </div>
     );
 }
