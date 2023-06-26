@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import ProductsList from '@/components/ProductsList'
 import SearchBar from '@/components/Search'
+import Login from '@/components/Login'
 import React, { useState } from 'react'
-
+import { useSession } from "next-auth/react"
 
 export default function Home() {
+  const { data: session } = useSession()
+
   const [query, setQuery] = useState("");
 
   return (
@@ -16,6 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+      {session && <Login />}
         <SearchBar setQuery={setQuery} query={query} />
         <ProductsList query={query} />
       </main>

@@ -1,57 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-// import axios from 'axios';
+import React from 'react';
+import { useSession, signIn, signOut } from "next-auth/react"
+
 
 export default function Login() {
-    const [ user, setUser ] = useState("");
-    const [ profile, setProfile ] = useState("");
+    const { data: session } = useSession()
 
-    const login = useGoogleLogin({
-        onSuccess: (codeResponse) => setUser(codeResponse),
-        onError: (error) => console.log('Login Failed:', error)
-    });
+    console.log({session})
 
-    useEffect(() => {
-        async function fetchData(){
-            if (user) {
-                const response = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-                    method:"GET",
-                    headers: {
-                            Authorization: `Bearer ${user.access_token}`,
-                            Accept: 'application/json'
-                        }
-                    })
-                    const data = await response.json();
-                    // console.log("received data", data);
-                        setProfile(data);
-            }
-        }
-    fetchData()
-    },
-        [ user ]
-    );
-
-    // log out function to log the user out of google and set the profile array to null
-    const logOut = () => {
-        googleLogout();
-        setProfile(null);
-    };
-
+    if (session) {
+      return (
+        <>
+          <h3>
+            Welcome {session.user.name}!
+            <img src={session.user.image} style={{width: '100px', borderRadius: '50%'}} />
+          </h3>
+          <br />
+          <button onClick={() => signOut()}>Sign out</button>
+        </>
+      )
+    }
     return (
-        <div>
-             {profile ? (
-                <div>
-                    <img src={profile.picture} alt="user image" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {profile.name}</p>
-                    <p>Email Address: {profile.email}</p>
-                    <br />
-                    <br />
-                    <button onClick={logOut}>Log out</button>
-                </div>
-            ) : (
-                <button onClick={() => login()}>Sign in with Google 🚀 </button>
-            )}
-        </div>
-    );
-}
+      <>
+        Not signed in <br />
+        <button onClick={() => signIn()}>Sign in</button>
+      </>
+    )
+  }
