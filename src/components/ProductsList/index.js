@@ -24,7 +24,6 @@ export default function ProductsList({query}) {
   if (isLoading) return <div>loading...</div>
 
   const foundProducts = products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()))
-  console.log("foundProducts",foundProducts);
   return (
     <StyledDiv>
     {foundProducts.length === 0 ?

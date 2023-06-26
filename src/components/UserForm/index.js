@@ -50,7 +50,7 @@ export default function UserForm({buttonText, prevName, prevEmail, prevLocation,
         if(doesTheUserAlreadyExist){
             await trigger(userData);
         }else{
-        const response = await fetch("/api/users", {
+        const response = await fetch("/api/auth", {
             method: "POST",
             body: JSON.stringify(userData),
             headers: {
@@ -58,13 +58,9 @@ export default function UserForm({buttonText, prevName, prevEmail, prevLocation,
             },
         });
 
-        if(!response.ok){
-            console.error(`There was an error: ${response.status}`)
-        }else{
-            users.mutate();
-        }
-    }
-    push(`/`);
+      }
+  
+  push(`/`);
     }
 
   return (
