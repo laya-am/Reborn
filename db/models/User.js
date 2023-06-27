@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-// import "./Review";
+import "./Product";
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -8,8 +8,8 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   location: { type: String, required: true },
   profilePicture: String,
-  bio: String
-//   reviews: { type: [Schema.Types.ObjectId], ref: "Review" },
+  bio: String,
+  products: { type: [Schema.Types.ObjectId], ref: "Product" },
 });
 
 const User =
