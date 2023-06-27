@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   }
 
   if(req.method === "GET"){
-    const user = await User.findById(id);
+    const user = await User.findById(id).populate("products");
 
     if (!user) {
       return res.status(404).json({ status: "Not Found" });

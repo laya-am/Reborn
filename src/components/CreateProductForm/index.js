@@ -14,6 +14,7 @@ export default function CreateProductForm() {
     const products = useSWR("/api/products");
     const router = useRouter();
     const {push} = router;
+    const {id}= router.query;
 
     const today = new Date();
     const options = {
@@ -32,7 +33,7 @@ export default function CreateProductForm() {
 
         const response = await fetch("/api/products", {
             method: "POST",
-            body: JSON.stringify(productDataPlusDate),
+            body: JSON.stringify({...productDataPlusDate, userId:id}),
             headers: {
               "Content-Type": "application/json",
             },
