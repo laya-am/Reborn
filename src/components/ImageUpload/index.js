@@ -1,9 +1,8 @@
 import { useState } from "react";
 
-export default function ImageUpload() {
+export default function ImageUpload({setUrl}) {
 
   const [loading, setLoading] = useState(false);
-  const [res, setRes] = useState({});
   const [file, setFile] = useState(null);
 
   const handleSelectFile = (e) => setFile(e.target.files[0]);
@@ -15,14 +14,13 @@ export default function ImageUpload() {
     console.log(file);
     data.set("sample_file", file);
     try {
- 
       const response = await fetch("/api/upload", {
         method: "POST",
         body: data,
     });
     const json= await response.json();
     console.log("json.url", json.url);
-    setRes(json);
+    setUrl(json.url);
 
     } catch (error) {
       console.log(error);
