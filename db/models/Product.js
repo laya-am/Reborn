@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-// import "./Review";
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
@@ -8,7 +7,6 @@ const productSchema = new Schema({
   price: { type: Number, required: true },
   image: String,
   date: String,
-//   reviews: { type: [Schema.Types.ObjectId], ref: "Review" },
 });
 
 const Product =

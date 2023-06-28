@@ -4,6 +4,7 @@ import SearchBar from '@/components/Search'
 import Login from '@/components/Login'
 import React, { useState } from 'react'
 import { useSession } from "next-auth/react"
+import ImageUpload from '@/components/ImageUpload'
 
 export default function Home() {
   const { data: session } = useSession()
@@ -20,6 +21,7 @@ export default function Home() {
       </Head>
       <main>
       {session && <Login />}
+      <ImageUpload />
         <SearchBar setQuery={setQuery} query={query} />
         <ProductsList query={query} />
       </main>

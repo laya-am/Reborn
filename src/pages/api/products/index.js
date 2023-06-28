@@ -3,7 +3,7 @@ import Product from "../../../../db/models/Product"
 import User from "../../../../db/models/User"
 
 export default async function handler(req, res) {
-  await dbConnect(); 
+  await dbConnect();
 
     if(req.method === "GET"){
     const products = await Product.find();
