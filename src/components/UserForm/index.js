@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import useSWR from "swr"
 import useSWRMutation from "swr/mutation"
+import ImageUpload from '../ImageUpload'
 
 const StyledForm= styled.form`
     display: flex;
@@ -22,6 +23,9 @@ export default function UserForm({buttonText, prevName, prevEmail, prevLocation,
     const [email, setEmail] = useState(prevEmail)
     const [location, setLocation] = useState(prevLocation)
     const [bio, setBio] = useState(prevBio)
+
+    const [url, setUrl] = useState("");
+
     // if(isMutating){
     //     return null
     // }
@@ -50,9 +54,11 @@ export default function UserForm({buttonText, prevName, prevEmail, prevLocation,
         if(doesTheUserAlreadyExist){
             await trigger(userData);
         }else{
+        const completeData= {...userData, image: url}
+        console.log("completeData", completeData);
         const response = await fetch("/api/users", {
             method: "POST",
-            body: JSON.stringify(userData),
+            body: JSON.stringify(completeData),
             headers: {
               "Content-Type": "application/json",
             },
@@ -77,8 +83,9 @@ export default function UserForm({buttonText, prevName, prevEmail, prevLocation,
         <input type="password" id="password" name='password' autoComplete='current-password' required />
         <label htmlFor="location">Location:</label>
         <input id="location" name='location' value={location} onChange={e=> setLocation(e.target.value)} required />
-        <label htmlFor="profilePicture">Upload a Profile Picture:</label>
-        <input id="profilePicture" name='profilePicture' />
+        {/* <label htmlFor="profilePicture">Upload a Profile Picture:</label>
+        <input id="profilePicture" name='profilePicture' /> */}
+        <ImageUpload setUrl={setUrl}/>
         <label htmlFor="bio">Bio:</label>
         <textarea name="bio" id="bio" value={bio} onChange={e=> setBio(e.target.value)} cols="30" rows="10" placeholder='Share a little about yourself. This helps the other users to connect with you more easily.'></textarea>
         <button type="submit">{buttonText}</button>

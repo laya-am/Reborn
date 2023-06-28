@@ -21,7 +21,7 @@ const router= useRouter();
    
   return(
     <div>
-    {/* <Image src={user.image} alt={`${user.name}'s profile picture`} width="300" height="300" /> */}
+    <Image src={user.image} alt={`${user.name}'s profile picture`} width="300" height="300" />
     <h2>{user.name}</h2>
     <h3>{user.email}</h3>
     <h5>Location: {user.location}</h5>
