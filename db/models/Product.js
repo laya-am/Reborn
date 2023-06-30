@@ -8,7 +8,10 @@ const productSchema = new Schema({
   image: String,
   date: String,
   location: String,
-  coordinates: [Number],
+  coordinates: [{
+    longitude: Number,
+    latitude: Number,
+  }],
 });
 
 const Product =

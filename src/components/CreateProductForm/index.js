@@ -37,8 +37,8 @@ export default function CreateProductForm() {
         console.log("productData.location",productData.location);
         const completeProductData= {...productData, date, image: url};
 
-        const mapUrl= `https://api.mapbox.com/geocoding/v5/mapbox.places/${productData.location}.json?access_token=pk.eyJ1IjoibGF5YS1hbSIsImEiOiJjbGppY3podDcwZTM5M2Rwd2ZzcjhncXlqIn0.UTrjgvRym9VScITGfCUAGw`
-                // try {
+        const mapUrl= `https://api.mapbox.com/geocoding/v5/mapbox.places/${productData.location}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}`
+                // try { 
                     const coorResponse = await fetch(mapUrl);
                     // if (coorResponse.ok) {
                         const data = await coorResponse.json();
@@ -55,7 +55,7 @@ export default function CreateProductForm() {
 
         const response = await fetch("/api/products", {
             method: "POST",
-            body: JSON.stringify({...completeProductData, coordinates: coordinates, userId:id}),
+            body: JSON.stringify({...completeProductData, coordinates: [{longitude: coordinates[0], latitude: coordinates[1]}], userId:id}),
             headers: {
               "Content-Type": "application/json",
             },

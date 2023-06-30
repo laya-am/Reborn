@@ -11,8 +11,8 @@ export default function MyMap({ locations, marker, onClick, coordinates }) {
   const mapRef = useRef(null);
   
   const [viewport, setViewport] = useState({
-    longitude: coordinates[0],
-    latitude: coordinates[1],
+    longitude: coordinates[0].longitude,
+    latitude: coordinates[0].latitude,
     zoom: 13,
   });
 
