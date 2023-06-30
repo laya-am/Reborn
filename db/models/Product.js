@@ -7,7 +7,8 @@ const productSchema = new Schema({
   price: { type: Number, required: true },
   image: String,
   date: String,
-  location: [Number],
+  location: String,
+  coordinates: [Number],
 });
 
 const Product =

@@ -18,8 +18,8 @@ export default function SingleProduct() {
 
   return (
     <>
-    <ProductCard title={product.name} price={product.price} description={product.description} imageSrc={product.image} date={product.date} />
-    <MyMap location={product.location} />
+    <ProductCard title={product.name} price={product.price} description={product.description} imageSrc={product.image} date={product.date} location={product.location} />
+    <MyMap coordinates={product.coordinates} />
     </>
   )
 }
