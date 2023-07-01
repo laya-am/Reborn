@@ -1,5 +1,6 @@
 import dbConnect from "../../../../db/connect"
 import Product from "../../../../db/models/Product"
+import User from "../../../../db/models/User";
 
 export default async function handler(req, res) {
   await dbConnect();
@@ -12,5 +13,23 @@ export default async function handler(req, res) {
       return res.status(404).json({ status: "Not Found" });
     }
     res.status(200).json(product);
+  }
+  if (req.method === "DELETE") {
+    try{
+    //delete the product from products 
+    const productToDelete = await Product.findByIdAndDelete(id);
+    // res.status(200).json(productToDelete);
+
+    // delete the product id from the product list of the corresponding user:
+    /////// I need to send the userId on the client side
+    // const userToUpdate = await User.findById(req.body.userId)
+      await User.updateOne({ _id: req.body.userId }, { $unset: { products: [productToDelete._id] } });
+    res.status(201).json({status: "data deleted"})
+
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({error: error.message})
+  }
+
   }
 }
