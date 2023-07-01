@@ -12,7 +12,7 @@ export default function Login() {
         <>
           <h3>
             Welcome {session.user.name}!
-            <img src={session.user.image} style={{width: '100px', borderRadius: '50%'}} />
+            <img src={session.user.image} alt="user image" style={{width: '100px', borderRadius: '50%'}} />
           </h3>
           <br />
           <button onClick={() => signOut()}>Sign out</button>
