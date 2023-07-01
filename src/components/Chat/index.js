@@ -43,8 +43,7 @@ export default function Chat(){
   };
 
   const messages = receivedMessages.map((message, index) => {
-    // const author= session.user.name;
-    // console.log({message});
+   
     return (
       <span key={index} className={styles.message} data-author={message.data.author}>
         {message.data.text} author: {message.data.author}

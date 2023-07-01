@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import useSWR from "swr"
 import ImageUpload from '@/components/ImageUpload'
+import { useSession } from 'next-auth/react'
 
 const StyledForm= styled.form`
     display: flex;
@@ -13,13 +14,11 @@ const StyledForm= styled.form`
 
 export default function CreateProductForm() {
     const [url, setUrl] = useState("");
-    // const [neighborhood, setNeighborhood] = useState("");
 
     const products = useSWR("/api/products");
-    const router = useRouter();
-    const {push} = router;
-    const {id}= router.query;
-
+    const { data: session } = useSession();
+    const id = session.user.id;
+    
     const today = new Date();
     const options = {
         weekday: "long",
