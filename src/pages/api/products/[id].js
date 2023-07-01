@@ -15,15 +15,13 @@ export default async function handler(req, res) {
     res.status(200).json(product);
   }
   if (req.method === "DELETE") {
-    try{
+    try{ 
     //delete the product from products 
     const productToDelete = await Product.findByIdAndDelete(id);
-    // res.status(200).json(productToDelete);
 
     // delete the product id from the product list of the corresponding user:
-    /////// I need to send the userId on the client side
-    // const userToUpdate = await User.findById(req.body.userId)
-      await User.updateOne({ _id: req.body.userId }, { $unset: { products: [productToDelete._id] } });
+    const userId= req.headers.userid
+    await User.updateOne({ _id: userId }, { $pull: { products: productToDelete._id } });
     res.status(201).json({status: "data deleted"})
 
   } catch (error) {
