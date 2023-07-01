@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import "./User";
 const { Schema } = mongoose;
 
 const productSchema = new Schema({
@@ -12,6 +13,7 @@ const productSchema = new Schema({
     longitude: Number,
     latitude: Number,
   }],
+  userId: { type: Schema.Types.ObjectId, ref: "User" },
 });
 
 const Product =

@@ -1,14 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useChannel } from "../AblyReactEffect";
 import styles from "./Chat.module.css";
+import { useSession } from "next-auth/react";
 
 export default function Chat(){
   let inputBox = null;
   let messageEnd = null;
-
+  const { data: session } = useSession();
+  
   const [messageText, setMessageText] = useState("");
   const [receivedMessages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
+  
+  useEffect(() => {
+    channel.history((err, result) => {
+      setMessages(result.items)
+    })
+  });
 
   const [channel, ably] = useChannel("chat-demo", (message) => {
     const history = receivedMessages.slice(-199);
@@ -16,7 +24,7 @@ export default function Chat(){
   });
 
   const sendChatMessage = (messageText) => {
-    channel.publish({ name: "chat-message", data: messageText });
+    channel.publish("chat-message", {text: messageText, author: session.user.name});
     setMessageText("");
     inputBox.focus();
   };
@@ -35,10 +43,10 @@ export default function Chat(){
   };
 
   const messages = receivedMessages.map((message, index) => {
-    const author = message.connectionId === ably.connection.id ? "me" : "other";
+   
     return (
-      <span key={index} className={styles.message} data-author={author}>
-        {message.data} author: {author}
+      <span key={index} className={styles.message} data-author={message.data.author}>
+        {message.data.text} author: {message.data.author}
       </span>
     );
   });
