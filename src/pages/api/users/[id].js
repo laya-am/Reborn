@@ -20,4 +20,20 @@ export default async function handler(req, res) {
     }
     return res.status(200).json(user);
   }
+
+  if(req.method === "POST"){
+    try {
+      const {sellerId, buyerId}= req.body;
+      await User.updateOne({ _id: buyerId }, { $set: { chatPartners: [sellerId] }  });
+      await User.updateOne({ _id: sellerId }, { $set: { chatPartners: [buyerId] }  });
+      // const sortedIds = [sellerId, buyerid].sort();
+      // const channelName = sortedIds.join('');
+    //   const newUser= new User(userData);
+    //   await newUser.save();
+      res.status(201).json({status: "data posted"})
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({error: error.message})
+    }
+  }
 }

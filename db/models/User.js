@@ -10,6 +10,7 @@ const userSchema = new Schema({
   image: String,
   bio: String,
   products: { type: [Schema.Types.ObjectId], ref: "Product" },
+  chatPartners: [String]
 });
 
 const User =
