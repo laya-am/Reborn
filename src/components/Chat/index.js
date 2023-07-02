@@ -12,12 +12,10 @@ export default function Chat({userId1, userId2}){
   const [receivedMessages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
   
-  // console.log("1",userId1);
-  // console.log("2",userId2);
+  console.log("userid1",userId1);
+  console.log("userid2",userId2);
   function getChannelID(str1, str2) {
-    // Sort the strings alphabetically
     const sortedStrings = [str1, str2].sort();
-    // Concatenate the sorted strings
     const concatenatedString = sortedStrings.join('');
     return concatenatedString;
   }

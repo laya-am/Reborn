@@ -15,14 +15,12 @@ export default function SingleProduct() {
   const { data: product } = useSWR(id ? `/api/products/${id}`: null)
   
   const sellerId= product?.userId;
-  const buyerId= session?.user.id;
-  // console.log("sellerId", sellerId);
-  // console.log("buyerId", buyerId);
+  const buyerId= session?.user.id; 
+
 
   let isSellerViewingThePage = false;
   sellerId === buyerId ? isSellerViewingThePage= true : null;
  
-  console.log(isSellerViewingThePage);
   if (!product) {
     return <h1>Loading...</h1>;
   }
@@ -44,13 +42,13 @@ export default function SingleProduct() {
     <>
     <ProductCard title={product.name} price={product.price} description={product.description} imageSrc={product.image} date={product.date} location={product.location} />
     <MyMap coordinates={product.coordinates} />
-    {/* {isSellerViewingThePage ? */}
+    {isSellerViewingThePage ?
     <>
     <ProductButton buttonText="Edit" />
     <ProductButton buttonText="Delete" />
     </>
-    : <Link href={{ pathname: '/messages', query: { userId1: sellerId, userId2: buyerId },}}><button onClick={handleClick}> Message the Seller</button></Link>
-    {/* } */}
+    : <Link href={{ pathname: '/messages', query: { userId1: sellerId}}}><button onClick={handleClick}> Message the Seller</button></Link>
+    }
     </>
   )
 }
