@@ -1,12 +1,5 @@
-import dynamic from 'next/dynamic'
-
-const Chat = dynamic(() => import('../../components/Chat'), { ssr: false });
+import Messages from '@/components/Messages';
 
 export default function messages() {
-  return (
-    <>
-    <h1>your messages here</h1>
-    <Chat />
-    </>
-  )
+ return <Messages />
 }

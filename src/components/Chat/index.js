@@ -3,7 +3,7 @@ import { useChannel } from "../AblyReactEffect";
 import styles from "./Chat.module.css";
 import { useSession } from "next-auth/react";
 
-export default function Chat(){
+export default function Chat({userId1, userId2}){
   let inputBox = null;
   let messageEnd = null;
   const { data: session } = useSession();
@@ -12,19 +12,29 @@ export default function Chat(){
   const [receivedMessages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
   
+  console.log("userid1",userId1);
+  console.log("userid2",userId2);
+  function getChannelID(str1, str2) {
+    const sortedStrings = [str1, str2].sort();
+    const concatenatedString = sortedStrings.join('');
+    return concatenatedString;
+  }
+
   useEffect(() => {
     channel.history((err, result) => {
       setMessages(result.items)
     })
-  });
+  }, []);
 
-  const [channel, ably] = useChannel("chat-demo", (message) => {
+  const channelName = getChannelID(userId1, userId2);
+  console.log({channelName});
+  const [channel, ably] = useChannel(channelName, (message) => {
     const history = receivedMessages.slice(-199);
     setMessages([...history, message]);
   });
 
   const sendChatMessage = (messageText) => {
-    channel.publish("chat-message", {text: messageText, author: session.user.name});
+    channel.publish(channelName, {text: messageText, author: session.user.name});
     setMessageText("");
     inputBox.focus();
   };
