@@ -1,0 +1,287 @@
+[
+    {
+        "name": "Vintage Leather Jacket",
+        "image": "https://cdn.shopify.com/s/files/1/0273/9840/6281/products/secondhand_thrift_clothing_0062.jpg?v=1658779492&width=1100",
+        "description": "A stylish vintage leather jacket in excellent condition.",
+        "price": 99.99,
+        "date": "Monday, 19 June 2023",
+        "location": "Charlottenburg",
+        "coordinates": [
+          {
+            "longitude": 13.298,
+            "latitude": 52.516
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Antique Wooden Desk",
+        "image": "https://www.thedeskcentre.co.uk/zxc16.jpg",
+        "description": "An elegant antique wooden desk with intricate carvings.",
+        "price": 249.99,
+        "date": "Tuesday, 20 June 2023",
+        "location": "Kreuzberg",
+        "coordinates": [
+          {
+            "longitude": 13.398,
+            "latitude": 52.497
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Refurbished DSLR Camera",
+        "image": "https://media.karousell.com/media/photos/products/2023/3/14/nikon_d850_1678805915_f5925169_progressive.jpg",
+        "description": "A professional-grade DSLR camera, fully refurbished and in great working condition.",
+        "price": 599.99,
+        "date": "Thursday, 22 June 2023",
+        "location": "Marzahn",
+        "coordinates": [
+          {
+            "longitude": 13.577,
+            "latitude": 52.541
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Refurbished Smartwatch",
+        "image": "https://ae01.alicdn.com/kf/S8dad3e325967492998f4d5660cf5a565X.jpg",
+        "description": "A refurbished smartwatch with advanced features and fitness tracking capabilities.",
+        "price": 129.99,
+        "date": "Tuesday, 11 July 2023",
+        "location": "Stegliz",
+        "coordinates": [
+          {
+            "longitude": 13.280,
+            "latitude": 52.456
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Vintage Polaroid Camera",
+        "image": "https://i.etsystatic.com/6660959/r/il/548cbb/4638226255/il_1140xN.4638226255_au1f.jpg",
+        "description": "An iconic vintage Polaroid camera that captures instant memories.",
+        "price": 79.99,
+        "date": "Friday, 23 June 2023",
+        "location": "Mitte",
+        "coordinates": [
+          {
+            "longitude": 13.404,
+            "latitude": 52.520
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Designer Sunglasses",
+        "image": "https://images.squarespace-cdn.com/content/v1/5cd2555994d71a16b3b6ffc1/1664216998175-QH4MOC6TNF4NCFB43ODO/unsplash-image-BItOCAqPuUU.jpg?format=1500w",
+        "description": "A pair of stylish designer sunglasses with UV protection.",
+        "price": 49.99,
+        "date": "Saturday, 24 June 2023",
+        "location": "Pankow",
+        "coordinates": [
+          {
+            "longitude": 13.412,
+            "latitude": 52.566
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Classic Vinyl Turntable",
+        "image": "https://imagedelivery.net/ePR8PyKf84wPHx7_RYmEag/a832704a-2388-49cf-df4c-bda1571f8b00/86",
+        "description": "A classic vinyl turntable for music enthusiasts.",
+        "price": 179.99,
+        "date": "Sunday, 25 June 2023",
+        "location": "Stegliz",
+        "coordinates": [
+          {
+            "longitude": 13.280,
+            "latitude": 52.456
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Antique Pocket Watch",
+        "image": "https://i.etsystatic.com/6357465/r/il/ced148/2826040765/il_1140xN.2826040765_95kt.jpg",
+        "description": "A beautifully crafted antique pocket watch with intricate details.",
+        "price": 199.99,
+        "date": "Tuesday, 27 June 2023",
+        "location": "Charlottenburg",
+        "coordinates": [
+          {
+            "longitude": 13.298,
+            "latitude": 52.516
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Secondhand Bicycle",
+        "image": "https://coresites-cdn-adm.imgix.net/twc/wp-content/uploads/2014/06/Second-Hand-Road-bike.jpg?fit=crop&w=680&h=380",
+        "description": "A reliable secondhand bicycle for commuting or leisure rides.",
+        "price": 149.99,
+        "date": "Wednesday, 28 June 2023",
+        "location": "Kreuzberg",
+        "coordinates": [
+          {
+            "longitude": 13.398,
+            "latitude": 52.497
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Gently Used Laptop",
+        "image": "https://scontent-ber1-1.xx.fbcdn.net/v/t1.6435-9/117045999_159041435841748_4236519866868427995_n.jpg?_nc_cat=109&cb=99be929b-59f725be&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=fDa3gMNTrfIAX9ArHuh&_nc_ht=scontent-ber1-1.xx&oh=00_AfCAFRRy0_QepTn5pcdz2znX3jlk6ZrBFNuORWDRnAxn6Q&oe=64CA0288",
+        "description": "A gently used laptop with upgraded specifications for improved performance.",
+        "price": 699.99,
+        "date": "Sunday, 9 July 2023",
+        "location": "Mitte",
+        "coordinates": [
+          {
+            "longitude": 13.404,
+            "latitude": 52.520
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Preloved Designer Handbag",
+        "image": "https://i0.wp.com/inspirelle.com/wp-content/uploads/2021/06/Vintage-bag_LGonzales_WEB.jpg?fit=640%2C425&ssl=1",
+        "description": "A preloved designer handbag in excellent condition, perfect for adding style to any outfit.",
+        "price": 299.99,
+        "date": "Monday, 10 July 2023",
+        "location": "Pankow",
+        "coordinates": [
+          {
+            "longitude": 13.412,
+            "latitude": 52.566
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Retro Vinyl Records",
+        "image": "https://rare-gallery.com/thumbs/5413178-record-vintage-music-vinyl-bundle-collection-shop-store-retro-old-spanish-second-hand-second-hand-shop-music-shop-feliciano-dj-lp-msica-vinilo-disco-png-images.jpg",
+        "description": "A collection of classic retro vinyl records from various genres.",
+        "price": 19.99,
+        "date": "Wednesday, 21 June 2023",
+        "location": "Neukölln",
+        "coordinates": [
+          {
+            "longitude": 13.439,
+            "latitude": 52.481
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Secondhand Electric Scooter",
+        "image": "https://www.sxt-scooters.de/out/pictures/master/product/1/buddy-v2-wei.jpg",
+        "description": "A secondhand electric scooter that provides convenient and eco-friendly transportation.",
+        "price": 499.99,
+        "date": "Wednesday, 12 July 2023",
+        "location": "Treptow",
+        "coordinates": [
+          {
+            "longitude": 13.465,
+            "latitude": 52.455
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Gently Used Fitness Equipment",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/P90xgym.jpg/1280px-P90xgym.jpg",
+        "description": "Gently used fitness equipment, including dumbbells, resistance bands, and a yoga mat.",
+        "price": 79.99,
+        "date": "Thursday, 13 July 2023",
+        "location": "Charlottenburg",
+        "coordinates": [
+          {
+            "longitude": 13.298,
+            "latitude": 52.516
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      },
+      {
+        "name": "Vintage Typewriter",
+        "image": "https://preview.redd.it/just-dusted-off-my-pops-old-typewriter-that-he-bought-v0-b75ea23af51b1.jpg?width=640&crop=smart&auto=webp&s=8e9a28edf1cfe4cfee9b9af6e037399e5f41e074",
+        "description": "A fully functional vintage typewriter with a unique retro design.",
+        "price": 129.99,
+        "date": "Monday, 26 June 2023",
+        "location": "Treptow",
+        "coordinates": [
+          {
+            "longitude": 13.465,
+            "latitude": 52.455
+          }
+        ],
+        "userId": [
+          {
+            "id": "6499a3420d40757b285e3ee9"
+          }
+        ]
+      }
+    ]

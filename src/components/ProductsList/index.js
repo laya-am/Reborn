@@ -10,16 +10,17 @@ const StyledDiv= styled.div`
     ${'' /* flex-direction: column; */}
     flex-wrap: wrap;
     justify-content: center;
-    padding: 30px;
-    gap: 50px;
-    height: 100vh
+    padding-top: 30px;
+    gap: 30px;
+    height: 100vh;
+    padding-bottom: 200px;
 `
 
 export default function ProductsList({query}) {
 
   const router= useRouter();
   const { data: products, error, isLoading } = useSWR('/api/products')
- 
+  
   if (error) return <div>failed to load</div>
   if (isLoading) return <div>loading...</div>
 
@@ -30,7 +31,7 @@ export default function ProductsList({query}) {
       <h1> Nothing Found:( </h1>
       : foundProducts.map(product => (
       <StyledButton key={product._id} onClick={() => router.push(`/${product._id}`)}>
-        <ProductCard title= {product.name} price= {product.price} description= {product.description} imageSrc= {product.image} date={product.date}/>
+        <ProductCard title= {product.name} price= {product.price} description= {product.description} imageSrc= {product.image} date={product.date} location={product.location}/>
       </StyledButton>
     ))}
     </StyledDiv>

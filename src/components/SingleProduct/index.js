@@ -17,6 +17,8 @@ export default function SingleProduct() {
   const sellerId= product?.userId;
   const buyerId= session?.user.id; 
 
+  console.log({sellerId});
+  console.log({buyerId});
 
   let isSellerViewingThePage = false;
   sellerId === buyerId ? isSellerViewingThePage= true : null;

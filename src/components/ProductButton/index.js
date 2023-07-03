@@ -7,7 +7,6 @@ export default function ProductButton({buttonText}) {
     const router= useRouter();
     const { query:{ id } ,push} = router;
     const { data: session } = useSession()
-    // const { trigger, isMutating } = useSWRMutation(`/api/users/${id}`,updateUser);
 
     async function handleClick(){
 

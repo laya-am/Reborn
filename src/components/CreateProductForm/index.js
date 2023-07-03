@@ -1,94 +1,103 @@
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import useSWR from "swr"
-import ImageUpload from '@/components/ImageUpload'
-import { useSession } from 'next-auth/react'
+import React, { useState } from "react";
+import Link from "next/link";
+import styled from "styled-components";
+import useSWR from "swr";
+import ImageUpload from "@/components/ImageUpload";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
-const StyledForm= styled.form`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center
-`
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+`;
 
 export default function CreateProductForm() {
-    const [url, setUrl] = useState("");
+  const router = useRouter();
+  const [url, setUrl] = useState("");
 
-    const products = useSWR("/api/products");
-    const { data: session } = useSession();
-    const id = session.user.id;
-    
-    const today = new Date();
-    const options = {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-    };
-    const date= today.toLocaleString("en-GB", options);
+  const products = useSWR("/api/products");
+  const { data: session } = useSession();
+  const id = session?.user.id;
 
+  const today = new Date();
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const date = today.toLocaleString("en-GB", options);
 
-    async function handleSubmit(e){
-        e.preventDefault();
-        const formData= new FormData(e.target);
-        const productData= Object.fromEntries(formData);
-        console.log("productData.location",productData.location);
-        const completeProductData= {...productData, date, image: url};
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const productData = Object.fromEntries(formData);
+    console.log("productData.location", productData.location);
+    const completeProductData = { ...productData, date, image: url };
 
-        const mapUrl= `https://api.mapbox.com/geocoding/v5/mapbox.places/${productData.location}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}`
-                // try { 
-                    const coorResponse = await fetch(mapUrl);
-                    // if (coorResponse.ok) {
-                        const data = await coorResponse.json();
-                        const coordinates= data?.features[0]?.center;
-                        console.log("coordinates: ",coordinates);
-                    // }
-                //     } else {
-                //         console.error("Bad Response");
-                //     }
-                // } catch (error) {
-                //     console.error("An Error occurred");
-                // }
+    const mapUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/${productData.location}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}`;
+    const coorResponse = await fetch(mapUrl);
+    const data = await coorResponse.json();
+    const coordinates = data?.features[0]?.center;
+    console.log("coordinates: ", coordinates);
 
+    const response = await fetch("/api/products", {
+      method: "POST",
+      body: JSON.stringify({
+        ...completeProductData,
+        coordinates: [{ longitude: coordinates[0], latitude: coordinates[1] }],
+        userId: id,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-        const response = await fetch("/api/products", {
-            method: "POST",
-            body: JSON.stringify({...completeProductData, coordinates: [{longitude: coordinates[0], latitude: coordinates[1]}], userId:id}),
-            headers: {
-              "Content-Type": "application/json",
-            },
-        });
-
-        if(!response.ok){
-            console.error(`There was an error: ${response.status}`)
-        }else{
-            products.mutate();
-            push("/");
-        }
+    if (!response.ok) {
+      console.error(`There was an error: ${response.status}`);
+    } else {
+      products.mutate();
+      router.push("/");
     }
-
-  return (
-    <StyledForm onSubmit={handleSubmit}>
+  }
+  if (session) {
+    return (
+      <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="title">Title:</label>
-        <input id="title" name='name' required/>
+        <input id="title" name="name" required />
         <label htmlFor="price">Price:</label>
-        <input type="number" id="price" name='price' required /><span>EUR</span>
+        <input type="number" id="price" name="price" required />
+        <span>EUR</span>
         <label htmlFor="location">Choose a Neighborhood:</label>
         <select name="location" id="location">
-            <option value="charlottenburg">Charlottenburg</option>
-            <option value="kreuzberg">Kreuzberg</option>
-            <option value="marzahn">Marzahn</option>
-            <option value="mitte">Mitte</option>
-            <option value="neukölln">Neukölln</option>
-            <option value="pankow">Pankow</option>
-            <option value="stegliz">Stegliz</option>
-            <option value="treptow">Treptow</option>
+          <option value="charlottenburg">Charlottenburg</option>
+          <option value="kreuzberg">Kreuzberg</option>
+          <option value="marzahn">Marzahn</option>
+          <option value="mitte">Mitte</option>
+          <option value="neukölln">Neukölln</option>
+          <option value="pankow">Pankow</option>
+          <option value="stegliz">Stegliz</option>
+          <option value="treptow">Treptow</option>
         </select>
         <label htmlFor="description">Share the details:</label>
-        <textarea name="description" id="description" cols="30" rows="10" placeholder='How old or new is your product? Are there any signs of wear and tear? any defects? '></textarea>
+        <textarea
+          name="description"
+          id="description"
+          cols="30"
+          rows="10"
+          placeholder="How old or new is your product? Are there any signs of wear and tear? any defects? "
+        ></textarea>
         <ImageUpload setUrl={setUrl} />
         <button type="submit">Add Product</button>
-    </StyledForm>
-  )
+      </StyledForm>
+    );
+  }
+  return (
+    <>
+      <h1>please first login</h1>
+      <Link href="/sign-up" ><button>Login</button></Link>
+    </>
+  );
 }
