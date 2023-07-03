@@ -7,6 +7,7 @@ display: flex;
 flex-direction: column;
 box-sizing: border-box;
 width: 40vw;
+height: 25vh
 `
 
 export const StyledImage= styled.img`

@@ -1,20 +1,9 @@
 import React from 'react'
 import ProductCard from '../ProductCard'
-import styled from 'styled-components'
 import useSWR from "swr"
-import { StyledButton } from '../Button/Button.styled'
 import { useRouter } from 'next/router'
+import { StyledDiv, StyledButton } from './ProductsList.styled'
 
-const StyledDiv= styled.div`
-    display: flex;
-    ${'' /* flex-direction: column; */}
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 30px;
-    gap: 30px;
-    height: 100vh;
-    padding-bottom: 200px;
-`
 
 export default function ProductsList({query}) {
 
@@ -31,7 +20,7 @@ export default function ProductsList({query}) {
       <h1> Nothing Found:( </h1>
       : foundProducts.map(product => (
       <StyledButton key={product._id} onClick={() => router.push(`/${product._id}`)}>
-        <ProductCard title= {product.name} price= {product.price} description= {product.description} imageSrc= {product.image} date={product.date} location={product.location}/>
+        <ProductCard title= {product.name} price= {product.price} imageSrc= {product.image} location={product.location}/>
       </StyledButton>
     ))}
     </StyledDiv>

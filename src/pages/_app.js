@@ -3,8 +3,6 @@ import { SWRConfig } from "swr";
 import NavBar from '@/components/NavBar';
 import {SessionProvider} from "next-auth/react"
 import Script from 'next/script';
-
-// import { GoogleOAuthProvider } from '@react-oauth/google';
 import Head from 'next/head';
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
