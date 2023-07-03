@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import styled from "styled-components";
 import useSWR from "swr";
 import ImageUpload from "@/components/ImageUpload";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-`;
+import { StyledForm, StyledDiv, StyledInput, StyledSelect, StyledTextArea } from "./CreateproductForm.styled";
+import { StyledButton } from "../Button/Button.styled";
 
 export default function CreateProductForm() {
   const router = useRouter();
@@ -65,39 +59,52 @@ export default function CreateProductForm() {
   if (session) {
     return (
       <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
-        <input id="title" name="name" required />
-        <label htmlFor="price">Price:</label>
-        <input type="number" id="price" name="price" required />
-        <span>EUR</span>
-        <label htmlFor="location">Choose a Neighborhood:</label>
-        <select name="location" id="location">
-          <option value="charlottenburg">Charlottenburg</option>
-          <option value="kreuzberg">Kreuzberg</option>
-          <option value="marzahn">Marzahn</option>
-          <option value="mitte">Mitte</option>
-          <option value="neukölln">Neukölln</option>
-          <option value="pankow">Pankow</option>
-          <option value="stegliz">Stegliz</option>
-          <option value="treptow">Treptow</option>
-        </select>
-        <label htmlFor="description">Share the details:</label>
-        <textarea
-          name="description"
-          id="description"
-          cols="30"
-          rows="10"
-          placeholder="How old or new is your product? Are there any signs of wear and tear? any defects? "
-        ></textarea>
+        <StyledDiv>
+          <label htmlFor="title">Title:</label>
+          <StyledInput id="title" name="name" required />
+        </StyledDiv>
+        <StyledDiv>
+          <label htmlFor="price">Price:</label>
+          <div>
+          <StyledInput type="number" id="price" name="price" required />
+          <span style={{"margin-left": "10px"}}>EUR</span>
+          </div>
+        </StyledDiv>
+        <StyledDiv>
+          <label htmlFor="location">Choose a Neighborhood:</label>
+          <StyledSelect name="location" id="location">
+            <option value="">-------</option>
+            <option value="charlottenburg">Charlottenburg</option>
+            <option value="kreuzberg">Kreuzberg</option>
+            <option value="marzahn">Marzahn</option>
+            <option value="mitte">Mitte</option>
+            <option value="neukölln">Neukölln</option>
+            <option value="pankow">Pankow</option>
+            <option value="stegliz">Stegliz</option>
+            <option value="treptow">Treptow</option>
+          </StyledSelect>
+        </StyledDiv>
+        <StyledDiv>
+          <label htmlFor="description">Share the details:</label>
+          <StyledTextArea
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+            placeholder="How old or new is your product? Are there any signs of wear and tear? any defects?"
+          ></StyledTextArea>
+        </StyledDiv>
         <ImageUpload setUrl={setUrl} />
-        <button type="submit">Add Product</button>
+        <StyledButton type="submit">Add Product</StyledButton>
       </StyledForm>
     );
   }
   return (
     <>
       <h1>please first login</h1>
-      <Link href="/sign-up" ><button>Login</button></Link>
+      <Link href="/sign-up">
+        <button>Login</button>
+      </Link>
     </>
   );
 }

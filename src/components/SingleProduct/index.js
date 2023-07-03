@@ -1,4 +1,5 @@
 import React from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
@@ -56,10 +57,10 @@ export default function SingleProduct() {
         <p>{product.location}</p>
         <MyMap coordinates={product.coordinates} />
       {isSellerViewingThePage ? (
-        <>
+        <div style={{"display":"flex", "justify-content": "flex-start"}}>
           <ProductButton buttonText="Edit" />
           <ProductButton buttonText="Delete" />
-        </>
+        </div>
       ) : (
         <StyledButton onClick={handleClick}> Message the Seller
         <Link href={{ pathname: "/messages", query: { userId1: sellerId } }}></Link>

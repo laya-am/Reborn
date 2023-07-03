@@ -7,7 +7,10 @@ display: flex;
 flex-direction: column;
 box-sizing: border-box;
 width: 40vw;
-height: 25vh
+height: 25vh;
+&:hover{
+    box-shadow: 10px 5px 5px lightgrey;
+}
 `
 
 export const StyledImage= styled.img`

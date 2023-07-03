@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router';
 import useSWRMutation from "swr/mutation"
 import { useSession } from 'next-auth/react';
+import { StyledButton } from '../Button/Button.styled';
 
 export default function ProductButton({buttonText}) {
     const router= useRouter();
@@ -27,6 +28,6 @@ export default function ProductButton({buttonText}) {
  
 
   return (
-    <button onClick={handleClick}>{buttonText}</button>
+    <StyledButton style={{"width": "70px"}} onClick={handleClick}>{buttonText}</StyledButton>
   )
 }
