@@ -24,7 +24,6 @@ export default function ProfilePage() {
   if (!user) {
     return <StyledDiv style={{"height":"100vh", "justifyContent": "center"}}><h3>Loading...</h3></StyledDiv>;
   }
-  console.log(user);
   if (session) {
     return (
       <StyledDiv>
