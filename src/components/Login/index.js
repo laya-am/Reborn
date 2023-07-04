@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSession, signIn, signOut } from "next-auth/react"
+import { StyledButton } from '../StyledButton/StyledButton.styled';
 
 
 export default function Login() {
@@ -21,8 +22,8 @@ export default function Login() {
     }
     return (
       <>
-        Not signed in <br />
-        <button onClick={() => signIn()}>Sign in with Google</button>
+        {/* Not signed in <br /> */}
+        <StyledButton onClick={() => signIn()}>Sign in with Google</StyledButton>
       </>
     )
   }

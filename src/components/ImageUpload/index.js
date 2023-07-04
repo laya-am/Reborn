@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { StyledButton } from "../StyledButton/StyledButton.styled";
+import { StyledDiv } from "../StyledForm/StyledForm.styled";
 
 export default function ImageUpload({setUrl}) {
 
@@ -30,10 +32,10 @@ export default function ImageUpload({setUrl}) {
   };
 
   return (
-    <div>
+    <StyledDiv>
       <label htmlFor="file">
         {" "}
-        select file
+        Select an image:
       </label>
       <input
         id="file"
@@ -42,26 +44,13 @@ export default function ImageUpload({setUrl}) {
         multiple={false}
       />
       {file && <p>{file.name}</p>}
-      {/* <code>
-        {Object.keys(res).map(
-          (key) =>
-            key && (
-              <p key={key}>
-                <span>{key}:</span>
-                <span>
-                  {typeof res[key] === "object" ? "object" : res[key]}
-                </span>
-              </p>
-            )
-        )}
-      </code> */}
       {file && (
         <>
-          <button onClick={uploadFile}>
+          <StyledButton style={{"width": "150px", "margin": 0, "backgroundColor": "#FFF9C9"}} onClick={uploadFile}>
             {loading ? "uploading..." : "upload the image"}
-          </button>
+          </StyledButton>
         </>
       )}
-    </div>
+    </StyledDiv>
   );
 }

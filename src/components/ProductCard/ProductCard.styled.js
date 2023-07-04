@@ -2,15 +2,26 @@ import styled from "styled-components"
 
 export const StyledCard= styled.div`
 border-radius: 20px;
-background-color: skyblue;
+background-color: #B5C99A;
 display: flex;
 flex-direction: column;
-gap: 10px;
+box-sizing: border-box;
+width: 40vw;
+height: 25vh;
+&:hover{
+    box-shadow: 10px 5px 5px lightgrey;
+}
 `
 
 export const StyledImage= styled.img`
 border-radius: 20px 20px 0 0;
-background-color: blue;
-height: 300px;
+height: 15vh;
+
 object-fit: cover;
+`
+
+export const StyledInfo= styled.div`
+${'' /* display: flex;
+flex-wrap: wrap; */}
+padding: 12px;
 `

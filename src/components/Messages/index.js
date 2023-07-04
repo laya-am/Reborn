@@ -8,7 +8,7 @@ export default function Messages() {
     const router = useRouter();
     const { data: session } = useSession();
     const [sellerId, setSellerId] = useState(router.query.userId1);
-    const currentId = session.user.id;
+    const currentId = session?.user.id;
     const [isLoading, setIsLoading] = useState(true);
 
     

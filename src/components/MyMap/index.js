@@ -5,7 +5,12 @@ import Map, { Marker } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import pin from "../../../public/pin.png"
+import styled from "styled-components";
 
+const StyledDiv= styled.div`
+  margin-left: auto;
+  margin-right: auto;
+`
 
 export default function MyMap({ locations, marker, onClick, coordinates }) {
   const mapRef = useRef(null);
@@ -17,7 +22,7 @@ export default function MyMap({ locations, marker, onClick, coordinates }) {
   });
 
   return (
-    <div>
+    <StyledDiv>
       <Map
         initialViewState={{ ...viewport }}
         mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN}
@@ -44,6 +49,6 @@ export default function MyMap({ locations, marker, onClick, coordinates }) {
           ))}{" "}
         {marker && <Marker {...marker} />}
       </Map>
-    </div>
+    </StyledDiv>
   );
 }

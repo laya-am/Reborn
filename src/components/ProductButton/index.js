@@ -2,12 +2,12 @@ import React from 'react'
 import { useRouter } from 'next/router';
 import useSWRMutation from "swr/mutation"
 import { useSession } from 'next-auth/react';
+import { StyledButton } from '../StyledButton/StyledButton.styled';
 
 export default function ProductButton({buttonText}) {
     const router= useRouter();
     const { query:{ id } ,push} = router;
     const { data: session } = useSession()
-    // const { trigger, isMutating } = useSWRMutation(`/api/users/${id}`,updateUser);
 
     async function handleClick(){
 
@@ -28,6 +28,6 @@ export default function ProductButton({buttonText}) {
  
 
   return (
-    <button onClick={handleClick}>{buttonText}</button>
+    <StyledButton style={{"width": "70px"}} onClick={handleClick}>{buttonText}</StyledButton>
   )
 }
