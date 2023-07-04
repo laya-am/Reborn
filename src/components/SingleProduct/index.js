@@ -60,9 +60,10 @@ export default function SingleProduct() {
          <ProductButton buttonText="Delete" />
         </div>
       ) : (
+        <Link href={{ pathname: "/messages", query: { userId1: sellerId } }}>
         <StyledButton onClick={handleClick}> Message the Seller
-        <Link href={{ pathname: "/messages", query: { userId1: sellerId } }}></Link>
         </StyledButton>
+        </Link>
       )}
       </StyledDiv>
     </>
