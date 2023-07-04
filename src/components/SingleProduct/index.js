@@ -55,7 +55,7 @@ export default function SingleProduct() {
         <p>{product.location}</p>
         <MyMap coordinates={product.coordinates} />
       {isSellerViewingThePage ? (
-        <div style={{"display":"flex", "justify-content": "flex-start"}}>
+        <div style={{"display":"flex", "justifyContent": "flex-start"}}>
           <ProductButton buttonText="Edit" />
           <ProductButton buttonText="Delete" />
         </div>

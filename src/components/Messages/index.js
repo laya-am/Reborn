@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+import { StyledDiv } from './Messages.styled';
 const Chat = dynamic(() => import('../../components/Chat'), { ssr: false });
 
 export default function Messages() {
@@ -31,14 +32,14 @@ export default function Messages() {
     }, [sellerId]);
 
     if (isLoading) {
-        return <p>Loading...</p>;
+      return <StyledDiv style={{"height":"100vh", "justifyContent": "center", "alignItems": "center"}}><h3>Loading...</h3></StyledDiv>;
     }
   
     return (
-      <>
+      <StyledDiv>
         <h1>Your messages here</h1>
         <Chat userId1={sellerId} userId2={currentId} />
-      </>
+      </StyledDiv>
     );
   }
   
