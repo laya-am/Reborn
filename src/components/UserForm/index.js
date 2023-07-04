@@ -78,7 +78,7 @@ export default function UserForm({
         users.mutate();
       }
     }
-    push(`/`);
+    push(`/profile-page`);
   }
 
   return (
@@ -116,16 +116,6 @@ export default function UserForm({
         required
       />
       </StyledDiv>}
-      <StyledDiv>
-      <label htmlFor="location">Location:</label>
-      <StyledInput
-        id="location"
-        name="location"
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        required
-      />
-      </StyledDiv>
       <ImageUpload setUrl={setUrl} />
       <StyledDiv>
       <label htmlFor="bio">Bio:</label>
