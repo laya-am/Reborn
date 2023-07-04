@@ -5,7 +5,6 @@ import TopNavBar from '@/components/TopNavBar'
 
 export default function Home() {
   const [query, setQuery] = useState("");
-
   return (
     <>
       <Head>

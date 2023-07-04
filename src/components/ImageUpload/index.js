@@ -21,7 +21,7 @@ export default function ImageUpload({setUrl}) {
         body: data,
     });
     const json= await response.json();
-    console.log("json.url", json.url);
+    // console.log("json.url", json.url);
     setUrl(json.url);
 
     } catch (error) {
