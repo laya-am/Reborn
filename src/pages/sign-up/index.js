@@ -29,7 +29,7 @@ export default function SignUp() {
     return (
       <StyledContainer>
       <StyledDiv>
-          <h3  style={{"padding-bottom":20}}>Already have an account? Log in:</h3>
+          <h3  style={{"paddingBottom":20}}>Already have an account? Log in:</h3>
           <Login />
         </StyledDiv>
         <hr />

@@ -1,14 +1,15 @@
 import React from 'react'
 import SearchBar from '@/components/Search'
 import Login from '@/components/Login'
-import { useSession } from "next-auth/react"
+import { signOut, useSession } from "next-auth/react"
 import Link from 'next/link'
 import { StyledDiv, StyledImage } from './TopNavBar.styles'
 
 
 export default function TopNavBar({setQuery, query}) {
     const { data: session } = useSession();
-
+  // console.log("session in top navbar", session);
+  // signOut();
   return (
     <StyledDiv>
         <SearchBar setQuery={setQuery} query={query} />

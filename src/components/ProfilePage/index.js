@@ -22,7 +22,7 @@ export default function ProfilePage() {
 
   const { data: user } = useSWR(id ? `/api/users/${id}` : null);
   if (!user) {
-    return <StyledDiv style={{"height":"100vh", "justify-content": "center"}}><h3>Loading...</h3></StyledDiv>;
+    return <StyledDiv style={{"height":"100vh", "justifyContent": "center"}}><h3>Loading...</h3></StyledDiv>;
   }
   console.log(user);
   if (session) {

@@ -25,7 +25,7 @@ export default function SingleProduct() {
   sellerId === buyerId ? (isSellerViewingThePage = true) : null;
 
   if (!product) {
-    return <StyledDiv style={{"height":"100vh", "justify-content": "center", "align-items": "center"}}><h3>Loading...</h3></StyledDiv>;
+    return <StyledDiv style={{"height":"100vh", "justifyContent": "center", "alignItems": "center"}}><h3>Loading...</h3></StyledDiv>;
   }
 
   async function handleClick() {
@@ -55,7 +55,7 @@ export default function SingleProduct() {
         <p>{product.location}</p>
         <MyMap coordinates={product.coordinates} />
       {isSellerViewingThePage ? (
-        <div style={{"display":"flex", "justify-content": "flex-start"}}>
+        <div style={{"display":"flex", "justifyContent": "flex-start"}}>
           <ProductButton buttonText="Edit" />
           <ProductButton buttonText="Delete" />
         </div>
