@@ -11,7 +11,7 @@ export default function ProductsList({query}) {
   const { data: products, error, isLoading } = useSWR('/api/products')
   
   if (error) return <div>failed to load</div>
-  if(isLoading) return <StyledDiv style={{"height":"100vh", "justify-content": "center", "align-content": "flex-start"}}><h3>Loading...</h3></StyledDiv>;
+  if(isLoading) return <StyledDiv style={{"height":"100vh", "justifyContent": "center", "alignContent": "flex-start"}}><h3>Loading...</h3></StyledDiv>;
 
   const foundProducts = products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()))
   return (

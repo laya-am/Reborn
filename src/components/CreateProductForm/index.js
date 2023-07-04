@@ -77,7 +77,7 @@ export default function CreateProductForm() {
           <label htmlFor="price">Price:</label>
           <div>
           <StyledInput type="number" id="price" name="price" required />
-          <span style={{"margin-left": "10px"}}>EUR</span>
+          <span style={{"marginLeft": "10px"}}>EUR</span>
           </div>
         </StyledDiv>
         <StyledDiv>
