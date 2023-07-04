@@ -20,16 +20,28 @@ export default function Messages() {
       return partnerId;
     }
   
+
+
+    // async function fetchPartnerInfo() {
+    //   const response = await fetch(`/api/users/${sellerId}`);
+    //   const partnerInfo = await response.json();
+    //   return partnerInfo;
+    // }
+
+
     useEffect(() => {
       async function updateSellerId() {
         const newSellerId = await fetchChatPartnersFromDB();
         setSellerId(newSellerId);
+        // const partner= await fetchPartnerInfo();
+        // console.log({partner});
         setIsLoading(false);
       }
       if (!sellerId) {
         updateSellerId();
       }
     }, [sellerId]);
+
 
     if (isLoading) {
       return <StyledDiv style={{"height":"100vh", "justifyContent": "center", "alignItems": "center"}}><h3>Loading...</h3></StyledDiv>;

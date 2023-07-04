@@ -25,7 +25,7 @@ export default function SingleProduct() {
   sellerId === buyerId ? (isSellerViewingThePage = true) : null;
 
   if (!product) {
-    return <StyledDiv style={{"height":"100vh", "justify-content": "center", "align-items": "center"}}><h3>Loading...</h3></StyledDiv>;
+    return <StyledDiv style={{"height":"100vh", "justifyContent": "center", "alignItems": "center"}}><h3>Loading...</h3></StyledDiv>;
   }
 
   async function handleClick() {
