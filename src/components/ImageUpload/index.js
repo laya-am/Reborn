@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { StyledButton } from "../Button/Button.styled";
-import { StyledDiv } from "../CreateProductForm/CreateproductForm.styled";
+import { StyledButton } from "../StyledButton/StyledButton.styled";
+import { StyledDiv } from "../StyledForm/StyledForm.styled";
 
 export default function ImageUpload({setUrl}) {
 
@@ -35,7 +35,7 @@ export default function ImageUpload({setUrl}) {
     <StyledDiv>
       <label htmlFor="file">
         {" "}
-        Select a file:
+        Select an image:
       </label>
       <input
         id="file"

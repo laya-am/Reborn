@@ -19,7 +19,7 @@ padding: 5px;
 border-radius: 4px;
 border: solid 1px;
 `
-
+ 
 export const StyledSelect= styled.select`
 padding: 5px;
 border-radius: 4px;

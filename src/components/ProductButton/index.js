@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router';
 import useSWRMutation from "swr/mutation"
 import { useSession } from 'next-auth/react';
-import { StyledButton } from '../Button/Button.styled';
+import { StyledButton } from '../StyledButton/StyledButton.styled';
 
 export default function ProductButton({buttonText}) {
     const router= useRouter();

@@ -4,8 +4,18 @@ import useSWR from "swr";
 import ImageUpload from "@/components/ImageUpload";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
-import { StyledForm, StyledDiv, StyledInput, StyledSelect, StyledTextArea } from "./CreateproductForm.styled";
-import { StyledButton } from "../Button/Button.styled";
+import { StyledForm, StyledDiv, StyledInput, StyledSelect, StyledTextArea } from "../StyledForm/StyledForm.styled";
+import { StyledButton } from "../StyledButton/StyledButton.styled";
+import styled from "styled-components";
+
+const StyledPleaseLoginDiv= styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+  justify-content: center;
+  gap: 40px;
+  `
 
 export default function CreateProductForm() {
   const router = useRouter();
@@ -100,11 +110,11 @@ export default function CreateProductForm() {
     );
   }
   return (
-    <>
-      <h1>please first login</h1>
+    <StyledPleaseLoginDiv>
+      <h1>Please Login</h1>
       <Link href="/sign-up">
-        <button>Login</button>
+        <StyledButton>Login</StyledButton>
       </Link>
-    </>
+    </StyledPleaseLoginDiv>
   );
 }

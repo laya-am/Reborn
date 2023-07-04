@@ -1,14 +1,12 @@
 import React from "react";
-import { Fragment } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Image from "next/image";
 import MyMap from "../MyMap";
 import ProductButton from "../ProductButton";
 import { useSession } from "next-auth/react";
 import { StyledImage, StyledDiv } from "./SingleProduct.styled";
-import { StyledButton } from "../Button/Button.styled";
+import { StyledButton } from "../StyledButton/StyledButton.styled";
 
 export default function SingleProduct() {
   const router = useRouter();
