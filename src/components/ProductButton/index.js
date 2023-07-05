@@ -21,9 +21,9 @@ export default function ProductButton({buttonText}) {
           push("/");
         }
 
-        if(buttonText === "Edit"){
+        // if(buttonText === "Edit"){
 
-        }
+        // }
     }
  
 

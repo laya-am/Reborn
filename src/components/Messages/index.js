@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
+import { StyledDiv } from './Messages.styled';
 const Chat = dynamic(() => import('../../components/Chat'), { ssr: false });
 
 export default function Messages() {
@@ -9,7 +10,7 @@ export default function Messages() {
     const { data: session } = useSession();
     const [sellerId, setSellerId] = useState(router.query.userId1);
     const currentId = session?.user.id;
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(!sellerId);
 
     console.log("I'm inside messages, sellerId: ", sellerId);
     console.log("I'm inside messages, currentId: ", currentId);
@@ -21,10 +22,21 @@ export default function Messages() {
       return partnerId;
     }
   
+
+
+    // async function fetchPartnerInfo() {
+    //   const response = await fetch(`/api/users/${sellerId}`);
+    //   const partnerInfo = await response.json();
+    //   return partnerInfo;
+    // }
+
+
     useEffect(() => {
       async function updateSellerId() {
         const newSellerId = await fetchChatPartnersFromDB();
         setSellerId(newSellerId);
+        // const partner= await fetchPartnerInfo();
+        // console.log({partner});
         setIsLoading(false);
       }
       setIsLoading(false);
@@ -34,15 +46,16 @@ export default function Messages() {
       }
     }, [sellerId]);
 
+
     if (isLoading) {
-        return <p>Loading...</p>;
+      return <StyledDiv style={{"height":"100vh", "justifyContent": "center", "alignItems": "center"}}><h3>Loading...</h3></StyledDiv>;
     }
   
     return (
-      <>
+      <StyledDiv>
         <h1>Your messages here</h1>
         <Chat userId1={sellerId} userId2={currentId} />
-      </>
+      </StyledDiv>
     );
   }
   

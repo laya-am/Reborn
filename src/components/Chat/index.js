@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useChannel } from "../AblyReactEffect";
-import styles from "./Chat.module.css";
 import { useSession } from "next-auth/react";
+import { StyledTextArea } from "../StyledForm/StyledForm.styled";
+import { StyledButton } from "../StyledButton/StyledButton.styled";
+import { StyledDiv, StyledForm } from "./Chat.styled";
 
 export default function Chat({userId1, userId2}){
   let inputBox = null;
@@ -55,9 +57,11 @@ export default function Chat({userId1, userId2}){
   const messages = receivedMessages.map((message, index) => {
    
     return (
-      <span key={index} className={styles.message} data-author={message.data.author}>
-        {message.data.text} author: {message.data.author}
-      </span>
+      <div style={{"margin": "10px"}} key={index}>
+      <p data-author={message.data.author}>
+        {message.data.author}: {message.data.text}
+      </p>
+      </div>
     );
   });
 
@@ -66,8 +70,8 @@ export default function Chat({userId1, userId2}){
   });
 
   return (
-    <div className={styles.chatHolder}>
-      <div className={styles.chatText}>
+    <StyledDiv>
+      <div>
         {messages}
         <div
           ref={(element) => {
@@ -75,8 +79,8 @@ export default function Chat({userId1, userId2}){
           }}
         ></div>
       </div>
-      <form onSubmit={handleFormSubmission} className={styles.form}>
-        <textarea
+      <StyledForm onSubmit={handleFormSubmission}>
+        <StyledTextArea cols="30"
           ref={(element) => {
             inputBox = element;
           }}
@@ -84,16 +88,14 @@ export default function Chat({userId1, userId2}){
           placeholder="Type a message..."
           onChange={(e) => setMessageText(e.target.value)}
           onKeyPress={handleKeyPress}
-          className={styles.textarea}
-        ></textarea>
-        <button
+        ></StyledTextArea>
+        <StyledButton
           type="submit"
-          className={styles.button}
           disabled={messageTextIsEmpty}
         >
           Send
-        </button>
-      </form>
-    </div>
+        </StyledButton>
+      </StyledForm>
+    </StyledDiv>
   );
 };

@@ -17,7 +17,7 @@ export default function ProductsList({query}) {
   return (
     <StyledDiv>
     {foundProducts.length === 0 ?
-      <h1> Nothing Found:( </h1>
+      <h3> Nothing Found :( </h3>
       : foundProducts.map(product => (
       <StyledButton key={product._id} onClick={() => router.push(`/${product._id}`)}>
         <ProductCard title= {product.name} price= {product.price} imageSrc= {product.image} location={product.location}/>

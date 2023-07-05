@@ -12,7 +12,6 @@ export default async function handler(req, res) {
   if(req.method === "POST"){
     // post the new product to db:
     try {
-      console.log("body", req.body);
       const newProduct= new Product(req.body);
       await newProduct.save();
 
@@ -30,4 +29,11 @@ export default async function handler(req, res) {
       res.status(400).json({error: error.message})
     }
   }
+
+  if(req.method === "PUT"){
+    console.log(req.body);
+    // await User.updateOne({ _id: req.body.userId }, { $set: { products: [newProduct._id] } });
+
+  }
+
 }

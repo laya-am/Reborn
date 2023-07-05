@@ -10,7 +10,7 @@ export default function EditProfilePage() {
     if(!user) return <h1>Loading...</h1>
     if (error) return <div>failed to load</div>
     if (isLoading) return <div>loading...</div>
-    console.log(user);
+    // console.log(user);
 
     return (
     <UserForm buttonText="Save and Update Profile" prevName={user.name} prevLocation={user.location} prevEmail={user.email} prevBio={user.bio} />

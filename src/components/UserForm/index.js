@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import styled from "styled-components";
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
 import ImageUpload from "../ImageUpload";
@@ -12,7 +11,6 @@ export default function UserForm({
   buttonText,
   prevName,
   prevEmail,
-  prevLocation,
   prevBio,
 }) {
   const {data: session} = useSession();
@@ -27,7 +25,6 @@ export default function UserForm({
 
   const [name, setName] = useState(prevName);
   const [email, setEmail] = useState(prevEmail);
-  const [location, setLocation] = useState(prevLocation);
   const [bio, setBio] = useState(prevBio);
 
   const [url, setUrl] = useState("");

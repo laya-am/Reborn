@@ -56,12 +56,13 @@ export default function SingleProduct() {
         <MyMap coordinates={product.coordinates} />
       {isSellerViewingThePage ? (
         <div style={{"display":"flex", "justifyContent": "flex-start"}}>
-          <ProductButton buttonText="Edit" />
-          <ProductButton buttonText="Delete" />
+        <Link href={`/edit-product/${id}`}><ProductButton buttonText="Edit" /></Link>
+         <ProductButton buttonText="Delete" />
         </div>
       ) : (
         <Link href={{ pathname: "/messages", query: { userId1: sellerId } }}>
-        <StyledButton onClick={handleClick}> Message the Seller</StyledButton>
+        <StyledButton onClick={handleClick}> Message the Seller
+        </StyledButton>
         </Link>
       )}
       </StyledDiv>
