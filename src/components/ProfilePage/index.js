@@ -22,7 +22,11 @@ export default function ProfilePage() {
 
   const { data: user } = useSWR(id ? `/api/users/${id}` : null);
   if (!user) {
-    return <StyledDiv style={{"height":"100vh", "justifyContent": "center"}}><h3>Loading...</h3></StyledDiv>;
+    return (
+      <StyledDiv style={{ height: "100vh", justifyContent: "center" }}>
+        <h3>Loading...</h3>
+      </StyledDiv>
+    );
   }
   console.log(user);
   if (session) {
@@ -30,8 +34,12 @@ export default function ProfilePage() {
       <StyledDiv>
         <StyledImage src={user.image} alt={`${user.name}'s profile picture`} />
         <h2>{user.name}</h2>
-        <h3>{user.email}</h3>
-        <p>{user.bio}</p>
+        <p>{user.email}</p>
+        <div style={{"width": "80vw"}}>
+          <h3>About Me</h3>
+          <hr />
+          <p style={{"marginTop": "20px"}}>{user.bio}</p>
+        </div>
         {user.products.length > 0 && <UserProducts products={user.products} />}
         <div>
           <StyledButton onClick={handleSignOut}>Sign out</StyledButton>
