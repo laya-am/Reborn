@@ -1,17 +1,22 @@
+import { StyledUl, StyledLi, StyledImage, StyledInfo } from "./UserProducts.styled";
+
 export default function UserProducts({ products }) {
-    return (
-      <>
-        <h3>Your Products</h3>
-        <ul>
-          {products.map((product) => (
-            <li key={product._id}>
-              <p>name: {product.name}</p>
+  return (
+    <div>
+      <h3>Your Products</h3>
+      <hr />
+      <StyledUl>
+        {products.map((product) => (
+          <StyledLi key={product._id}>
+            <StyledImage src={product.image} alt="product" />
+            <StyledInfo>
+              <h4>{product.name}</h4>
+              <p>{product.price} €</p>
               <p>added on {product.date}</p>
-              <p>price: {product.price} EUR</p>
-              {/* <p>description: {product.description}</p> */}
-            </li>
-          ))}
-        </ul>
-      </>
-    );
-  }
+            </StyledInfo>
+          </StyledLi>
+        ))}
+      </StyledUl>
+    </div>
+  );
+}
