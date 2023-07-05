@@ -14,8 +14,8 @@ export default function Chat({userId1, userId2}){
   const [receivedMessages, setMessages] = useState([]);
   const messageTextIsEmpty = messageText.trim().length === 0;
   
-  console.log("userid1",userId1);
-  console.log("userid2",userId2);
+  // console.log("userid1",userId1);
+  // console.log("userid2",userId2);
   function getChannelID(str1, str2) {
     const sortedStrings = [str1, str2].sort();
     const concatenatedString = sortedStrings.join('');
@@ -29,7 +29,7 @@ export default function Chat({userId1, userId2}){
   }, []);
 
   const channelName = getChannelID(userId1, userId2);
-  console.log({channelName});
+  // console.log({channelName});
   const [channel, ably] = useChannel(channelName, (message) => {
     const history = receivedMessages.slice(-199);
     setMessages([...history, message]);
@@ -59,7 +59,7 @@ export default function Chat({userId1, userId2}){
     return (
       <div style={{"margin": "10px"}} key={index}>
       <p data-author={message.data.author}>
-        {message.data.author}: {message.data.text}
+        <b>{message.data.author}</b>: {message.data.text}
       </p>
       </div>
     );
