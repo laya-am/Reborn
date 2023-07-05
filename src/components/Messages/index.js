@@ -12,6 +12,8 @@ export default function Messages() {
     const currentId = session?.user.id;
     const [isLoading, setIsLoading] = useState(!sellerId);
 
+    console.log("I'm inside messages, sellerId: ", sellerId);
+    console.log("I'm inside messages, currentId: ", currentId);
     
     async function fetchChatPartnersFromDB() {
       const response = await fetch(`/api/users/${currentId}`);
@@ -37,7 +39,9 @@ export default function Messages() {
         // console.log({partner});
         setIsLoading(false);
       }
+      setIsLoading(false);
       if (!sellerId) {
+        // console.log("inside useEffect if");
         updateSellerId();
       }
     }, [sellerId]);

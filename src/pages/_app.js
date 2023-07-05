@@ -12,6 +12,7 @@ export default function App({ Component, pageProps:{session, ...pageProps} }) {
     <>
     {/* <Head><link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
     </Head> */}
+
     <Script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js' />
     <SessionProvider session={session}>
     <SWRConfig value={{ fetcher }}>
