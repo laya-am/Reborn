@@ -14,16 +14,16 @@ export default function ProfilePage() {
   const id = session?.user.id;
 
   function handleSignOut() {
-    signOut();
-    if (!user) {
-      router.push("/");
-    }
+    signOut({ callbackUrl: '/' });
   }
 
   const { data: user } = useSWR(id ? `/api/users/${id}` : null);
   if (!user) {
-    return <StyledDiv style={{"height":"100vh", "justifyContent": "center"}}><h3>Loading...</h3></StyledDiv>;
-
+    return (
+      <StyledDiv style={{ height: "100vh", justifyContent: "center" }}>
+        <h3>Loading...</h3>
+      </StyledDiv>
+    );
   }
   if (session) {
     return (
@@ -31,10 +31,10 @@ export default function ProfilePage() {
         <StyledImage src={user.image} alt={`${user.name}'s profile picture`} />
         <h2>{user.name}</h2>
         <p>{user.email}</p>
-        <div style={{"width": "80vw"}}>
+        <div style={{ width: "80vw" }}>
           <h3>About Me</h3>
           <hr />
-          <p style={{"marginTop": "20px"}}>{user.bio}</p>
+          <p style={{ marginTop: "20px" }}>{user.bio}</p>
         </div>
         {user.products.length > 0 && <UserProducts products={user.products} />}
         <div>
