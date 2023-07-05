@@ -30,10 +30,4 @@ export default async function handler(req, res) {
     }
   }
 
-  if(req.method === "PUT"){
-    console.log(req.body);
-    // await User.updateOne({ _id: req.body.userId }, { $set: { products: [newProduct._id] } });
-
-  }
-
 }
