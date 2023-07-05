@@ -23,10 +23,11 @@ export default function Chat({userId1, userId2}){
   }
 
   useEffect(() => {
+    console.log("channel name:", channel.name)
     channel.history((err, result) => {
       setMessages(result.items)
     })
-  }, []);
+  }, [userId1]);
 
   const channelName = getChannelID(userId1, userId2);
   // console.log({channelName});
