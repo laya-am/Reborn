@@ -59,7 +59,7 @@ export default function Chat({userId1, userId2}){
     return (
       <div style={{"margin": "10px"}} key={index}>
       <p data-author={message.data.author}>
-        {message.data.author}: {message.data.text}
+        <b>{message.data.author}</b>: {message.data.text}
       </p>
       </div>
     );

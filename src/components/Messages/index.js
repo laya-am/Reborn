@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
-import { StyledDiv } from './Messages.styled';
+import { StyledDiv, StyledHeader } from './Messages.styled';
 const Chat = dynamic(() => import('../../components/Chat'), { ssr: false });
 
 export default function Messages() {
@@ -53,7 +53,7 @@ export default function Messages() {
   
     return (
       <StyledDiv>
-        <h1>Your messages here</h1>
+        <StyledHeader>Your messages</StyledHeader>
         <Chat userId1={sellerId} userId2={currentId} />
       </StyledDiv>
     );
