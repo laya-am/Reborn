@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const StyledButton= styled.button`
   padding: 10px;
   border-radius: 10px;
-  background-color: #B5C99A;
+  background-color: #4F709C;
+  color: white;
   border: none;
   margin: 10px;
   &:hover{

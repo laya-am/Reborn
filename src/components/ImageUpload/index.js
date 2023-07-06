@@ -46,7 +46,7 @@ export default function ImageUpload({setUrl}) {
       {file && <p>{file.name}</p>}
       {file && (
         <>
-          <StyledButton style={{"width": "150px", "margin": 0, "backgroundColor": "#FFF9C9"}} onClick={uploadFile}>
+          <StyledButton style={{"width": "150px", "margin": 0, "backgroundColor": "#4F709C"}} onClick={uploadFile}>
             {loading ? "uploading..." : "upload the image"}
           </StyledButton>
         </>

@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 
 const StyledNav= styled.ul`
-background-color: #862B0D;
+background-color: #4F709C;
 display: flex;
 justify-content: space-evenly;
 padding: 15px;
@@ -14,6 +14,8 @@ width: 100vw;
 `
 const StyledLi= styled.li`
 list-style-type: none;
+color: white;
+font-size: 13px;
 `
 
 export default function NavBar() {
